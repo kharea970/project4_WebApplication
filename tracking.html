@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>track</title>
+    <link rel="stylesheet" href="css/tracking_css.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script>
+    window.onload = function(){
+    document.getElementById('name').innerHTML = localStorage.getItem('name')
+    console.log(localStorage.getItem('total_price'))
+    console.log(localStorage.getItem('offer_value'))
+    var a1 = localStorage.getItem('cart');
+    var ob =  JSON.parse(a1)
+    var c = ob['ans']
+    var length = c;
+    document.getElementById('track_cart').innerHTML = parseInt(localStorage.getItem('total_price'))+"Rs"
+    if(parseInt(localStorage.getItem('offer_value')) != 0){
+        document.getElementById('a8').style.visibility="visible"
+        document.getElementById('a9').style.visibility="visible"
+        document.getElementById('a8').innerHTML = "-Rs"+parseInt(localStorage.getItem('offer_value'))
+        var final_total_price = parseInt(localStorage.getItem('total_price')) + 50  - parseInt(localStorage.getItem('offer_value'))
+        document.getElementById('final_total_price').innerHTML = final_total_price+"Rs"
+    }else{
+    var final_total_price = parseInt(localStorage.getItem('total_price')) + 50 
+    document.getElementById('final_total_price').innerHTML = final_total_price+"Rs"
+    }
+    
+    }
+    
+</script>
+</head>
+<body>
+    <div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body ">
+                    <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                    
+                    <div class="px-4 py-5">
+    
+                        <h5 id="name" class="text-uppercase"></h5>
+    
+    
+    
+                    <h4 class="mt-5 theme-color mb-5">Thanks for your order</h4>
+    
+                    <span class="theme-color">Payment Summary</span>
+                    <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+    
+                    <div class="d-flex justify-content-between" >
+                        <span class="font-weight-bold">Total Cart Value</span>
+                        <span class="text-muted" id="track_cart"></span>
+                    </div>
+    
+                    <div class="d-flex justify-content-between">
+                        <small>Shipping</small>
+                        <small>50 Rs</small>
+                    </div>
+                    <div  class="d-flex justify-content-between" style="visibility: hidden;" id="divoffer">
+                        <small id="a9">Offer Applied</small>
+                        <small id="a8"></small>
+                    </div>
+    
+                    
+                    <div class="d-flex justify-content-between mt-3">
+                        <span class="font-weight-bold">Total</span>
+                        <span class="font-weight-bold theme-color" id="final_total_price"></span>
+                    </div>  
+    
+    
+    
+                    <div class="text-center mt-5">
+    
+    
+                        <button class="btn btn-primary">Track your order</button>
+                        
+    
+    
+                    </div>                   
+    
+                    </div>
+    
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
